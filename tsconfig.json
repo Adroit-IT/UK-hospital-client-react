@@ -21,7 +21,9 @@
     "noFallthroughCasesInSwitch": true,
     "types": ["node"],
     "paths": {
-      "@/*": ["./src/*"]
+      "@*": ["./src/*"],
+      "@component/*": ["./src/components/*"],
+      "@icon/*": ["./src/components/atoms/Icon/*"]
     }
   },
   "include": ["src"],

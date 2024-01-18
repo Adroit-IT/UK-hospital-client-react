@@ -1,15 +1,15 @@
 import react from "@vitejs/plugin-react-swc";
+import path from "path";
 import { defineConfig } from "vite";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
   resolve: {
-    alias: [
-      {
-        find: "@",
-        replacement: new URL("src", import.meta.url).pathname,
-      },
-    ],
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+      "@component": path.resolve(__dirname, "./src/components"),
+      "@icon": path.resolve(__dirname, "./src/components/atoms/Icon"),
+    },
   },
 });
