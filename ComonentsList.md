@@ -20,3 +20,7 @@
 - Breadcrumbs - **Done**
 - Button - **Done**
 - Table - **Done**
+
+```bash
+# Note: any Ignore Syntax: /* eslint-disable  @typescript-eslint/no-explicit-any */
+```

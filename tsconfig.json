@@ -23,7 +23,10 @@
     "paths": {
       "@*": ["./src/*"],
       "@component/*": ["./src/components/*"],
-      "@icon/*": ["./src/components/atoms/Icon/*"]
+      "@atom/*": ["./src/components/atoms/*"],
+      "@icon/*": ["./src/components/atoms/Icon/*"],
+      "@molecule/*": ["./src/components/molecules/*"],
+      "@organism/*": ["./src/components/organisms/*"]
     }
   },
   "include": ["src"],
