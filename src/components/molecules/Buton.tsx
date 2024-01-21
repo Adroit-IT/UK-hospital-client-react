@@ -21,13 +21,13 @@ const Button: React.FC<ButtonProps> = ({
 
   const baseClasses = "btn";
   const variantClasses = {
-    primary: "btn-outline-primary",
-    info: "btn-outline-info",
-    success: "btn-outline-success",
-    warning: "btn-outline-warning",
-    danger: "btn-outline-danger",
-    secondary: "btn-outline-secondary",
-    dark: "btn-outline-dark",
+    primary: "btn-outline-primary hover:btn-primary",
+    info: "btn-outline-info hover:btn-info",
+    success: "btn-outline-success hover:btn-success",
+    warning: "btn-outline-warning hover:btn-warning",
+    danger: "btn-outline-danger hover:btn-danger",
+    secondary: "btn-outline-secondary hover:btn-secondary",
+    dark: "btn-outline-dark hover:btn-dark",
   };
 
   const handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {

@@ -22,6 +22,8 @@
     "types": ["node"],
     "paths": {
       "@*": ["./src/*"],
+      "@asset/*": ["./src/assets/*"],
+      "@config/*": ["./src/configs/*"],
       "@component/*": ["./src/components/*"],
       "@atom/*": ["./src/components/atoms/*"],
       "@icon/*": ["./src/components/atoms/Icon/*"],
