@@ -12,6 +12,7 @@ interface MenuItemConfig {
   title: string;
   icon?: any;
   subMenuItems?: SubMenuItem[];
+  directRoute?: string;
 }
 
 const MenuItemComponent: React.FC<{ config: MenuItemConfig }> = ({ config }) => {
@@ -21,31 +22,51 @@ const MenuItemComponent: React.FC<{ config: MenuItemConfig }> = ({ config }) => 
     setSubMenuOpen(!isSubMenuOpen);
   };
 
-  const { title, icon, subMenuItems } = config;
+  const { title, icon, subMenuItems, directRoute } = config;
+
+  const renderSubMenu = () => {
+    return (
+      <>
+        <AnimateHeight duration={300} height={isSubMenuOpen ? 'auto' : 0}>
+          <ul className="text-gray-500 sub-menu">
+            {subMenuItems &&
+              subMenuItems.map((subMenuItem, index) => (
+                <li key={index}>
+                  <NavLink to={subMenuItem.url}>{subMenuItem.label}</NavLink>
+                </li>
+              ))}
+          </ul>
+        </AnimateHeight>
+      </>
+    );
+  };
 
   return (
-    <li className="menu nav-item">
-      <button type="button" className={`nav-link group w-full ${isSubMenuOpen ? 'active' : ''}`} onClick={toggleSubMenu}>
-        <div className="flex items-center">
-          {icon} {/* Render the icon component */}
-          <span className="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">{title}</span>
-        </div>
+    <li className={directRoute ? 'nav-item' : 'menu nav-item'}>
+      {directRoute ? (
+        <NavLink to={directRoute} className={`nav-link group w-full ${isSubMenuOpen ? 'active' : ''}`}>
+          <div className="flex items-center">
+            {icon} {/* Render the icon component */}
+            <span className="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">{title}</span>
+          </div>
+        </NavLink>
+      ) : (
+        <>
+          <button type="button" className={`nav-link group w-full ${isSubMenuOpen ? 'active' : ''}`} onClick={toggleSubMenu}>
+            <div className="flex items-center">
+              {icon} {/* Render the icon component */}
+              <span className="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">{title}</span>
+            </div>
 
-        <div className={isSubMenuOpen ? 'rtl:rotate-90 -rotate-90' : ''}>
-          <IconCaretDown />
-        </div>
-      </button>
-
-      <AnimateHeight duration={300} height={isSubMenuOpen ? 'auto' : 0}>
-        <ul className="text-gray-500 sub-menu">
-          {subMenuItems &&
-            subMenuItems.map((subMenuItem, index) => (
-              <li key={index}>
-                <NavLink to={subMenuItem.url}>{subMenuItem.label}</NavLink>
-              </li>
-            ))}
-        </ul>
-      </AnimateHeight>
+            {subMenuItems && (
+              <div className={!isSubMenuOpen ? 'rtl:rotate-90 -rotate-90' : ''}>
+                <IconCaretDown />
+              </div>
+            )}
+          </button>
+          {renderSubMenu()}
+        </>
+      )}
     </li>
   );
 };

@@ -1,4 +1,4 @@
-import Card from '@components/organisms/auth/Card';
+import Card from '@component/organisms/auth/Card';
 import { setPageTitle } from '@config/themeConfigSlice';
 import IconLockDots from '@icon/IconLockDots';
 import IconMail from '@icon/IconMail';
@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-const ResetEmail = () => {
+const Login = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setPageTitle('Reset Email'));
@@ -14,7 +14,7 @@ const ResetEmail = () => {
   const navigate = useNavigate();
 
   const submitForm = () => {
-    navigate('/');
+    navigate('/dashboard');
   };
 
   return (
@@ -56,4 +56,4 @@ const ResetEmail = () => {
   );
 };
 
-export default ResetEmail;
+export default Login;

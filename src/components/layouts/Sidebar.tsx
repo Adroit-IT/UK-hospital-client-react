@@ -49,7 +49,7 @@ const Sidebar = () => {
       >
         <div className="h-full bg-white dark:bg-black">
           <div className="flex items-center justify-between px-4 py-3">
-            <NavLink to="/" className="flex items-center main-logo shrink-0">
+            <NavLink to="/dashboard" className="flex items-center main-logo shrink-0">
               <img className="w-8 ml-[5px] flex-none" src="/assets/images/logo.svg" alt="logo" />
               <span className="text-2xl ltr:ml-1.5 rtl:mr-1.5 font-semibold align-middle lg:inline dark:text-white-light">{t('VRISTO')}</span>
             </NavLink>
@@ -62,10 +62,12 @@ const Sidebar = () => {
               <IconCaretsDown className="m-auto rotate-90" />
             </button>
           </div>
-          <PerfectScrollbar>
-            {menuConfig.map((config, index) => (
-              <MenuItemComponent key={index} config={config} />
-            ))}
+          <PerfectScrollbar className="h-[calc(100vh-80px)] relative">
+            <ul className="relative font-semibold space-y-0.5 p-4 py-0">
+              {menuConfig.map((config, index) => (
+                <MenuItemComponent key={index} config={config} />
+              ))}
+            </ul>
           </PerfectScrollbar>
         </div>
       </nav>

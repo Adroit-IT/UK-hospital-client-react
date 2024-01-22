@@ -22,6 +22,7 @@
     "types": ["node"],
     "paths": {
       "@*": ["./src/*"],
+      "@view/*": ["./src/views/*"],
       "@asset/*": ["./src/assets/*"],
       "@config/*": ["./src/configs/*"],
       "@component/*": ["./src/components/*"],

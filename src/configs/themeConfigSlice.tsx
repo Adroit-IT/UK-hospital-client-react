@@ -13,10 +13,7 @@ const defaultState = {
   locale: 'en',
   sidebar: false,
   pageTitle: '',
-  languageList: [
-    { code: 'en', name: 'English' },
-    { code: 'fr', name: 'French' },
-  ],
+  languageList: [{ code: 'en', name: 'English' }],
   semidark: false,
 };
 
@@ -31,10 +28,7 @@ const initialState = {
   isDarkMode: false,
   sidebar: localStorage.getItem('sidebar') || defaultState.sidebar,
   semidark: localStorage.getItem('semidark') || themeConfig.semidark,
-  languageList: [
-    { code: 'en', name: 'English' },
-    { code: 'fr', name: 'French' },
-  ],
+  languageList: [{ code: 'en', name: 'English' }],
 };
 
 const themeConfigSlice = createSlice({

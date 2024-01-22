@@ -1,4 +1,4 @@
-import Card from '@components/organisms/auth/Card';
+import Card from '@component/organisms/auth/Card';
 import { setPageTitle } from '@config/themeConfigSlice';
 import IconLockDots from '@icon/IconLockDots';
 import IconMail from '@icon/IconMail';
@@ -15,7 +15,7 @@ const Register = () => {
   const navigate = useNavigate();
 
   const submitForm = () => {
-    navigate('/');
+    navigate('/dashboard');
   };
 
   return (

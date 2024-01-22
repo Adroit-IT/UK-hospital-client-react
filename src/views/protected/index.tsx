@@ -2,13 +2,13 @@ import { setPageTitle } from '@config/themeConfigSlice';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-const Index = () => {
+const Dashboard = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(setPageTitle('Home Page'));
+    dispatch(setPageTitle('Dashboard'));
   });
 
-  return <div>Protected Page Page</div>;
+  return <div>Protected Page Dashboard</div>;
 };
 
-export default Index;
+export default Dashboard;

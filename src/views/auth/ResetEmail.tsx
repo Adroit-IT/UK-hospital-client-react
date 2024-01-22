@@ -1,4 +1,4 @@
-import Card from '@components/organisms/auth/Card';
+import Card from '@component/organisms/auth/Card';
 import { setPageTitle } from '@config/themeConfigSlice';
 import IconMail from '@icon/IconMail';
 import { useEffect } from 'react';
@@ -13,7 +13,7 @@ const ResetEmail = () => {
   const navigate = useNavigate();
 
   const submitForm = () => {
-    navigate('/');
+    navigate('/login');
   };
 
   return (

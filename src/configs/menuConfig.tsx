@@ -2,6 +2,11 @@ import IconMenuDashboard from '@component/atoms/Icon/Menu/IconMenuDashboard';
 
 const menuConfig = [
   {
+    title: 'Dashboard',
+    icon: <IconMenuDashboard />,
+    directRoute: '/dashboard',
+  },
+  {
     title: 'Components',
     icon: <IconMenuDashboard />,
     label: 'Components',
