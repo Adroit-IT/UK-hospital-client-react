@@ -8,26 +8,32 @@ const routes = [
   {
     path: '/',
     element: <HomePage />,
-    layout: 'blank',
+    layout: 'guest',
   },
   {
     path: '/login',
     element: <Login />,
-    layout: 'blank',
+    layout: 'auth',
   },
   {
     path: '/register',
     element: <Register />,
-    layout: 'blank',
+    layout: 'auth',
   },
   {
     path: '/reset-email',
     element: <ResetEmail />,
-    layout: 'blank',
+    layout: 'auth',
   },
   {
     path: '/dashboard',
     element: <Dashboard />,
+    layout: 'admin',
+  },
+  {
+    path: '/404',
+    element: 'Not Found',
+    layout: '',
   },
 ];
 

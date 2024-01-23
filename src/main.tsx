@@ -6,6 +6,7 @@ import 'react-perfect-scrollbar/dist/css/styles.css';
 
 // Tailwind css
 import '@asset/styles/tailwind.css';
+import 'flowbite';
 
 // i18n (needs to be bundled)
 import '@asset/i18n';
