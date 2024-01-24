@@ -22,15 +22,12 @@
     "types": ["node"],
     "paths": {
       "@*": ["./src/*"],
-      "@view/*": ["./src/views/*"],
-      "@util/*": ["./src/utils/*"],
-      "@asset/*": ["./src/assets/*"],
-      "@config/*": ["./src/configs/*"],
-      "@component/*": ["./src/components/*"],
-      "@atom/*": ["./src/components/atoms/*"],
-      "@icon/*": ["./src/components/atoms/Icon/*"],
-      "@molecule/*": ["./src/components/molecules/*"],
-      "@organism/*": ["./src/components/organisms/*"]
+      "@views/*": ["./src/views/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@configs/*": ["./src/configs/*"],
+      "@components/*": ["./src/components/*"],
+      "@middlewares/*": ["./src/middlewares/*"]
     }
   },
   "include": ["src"],

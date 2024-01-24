@@ -100,7 +100,7 @@ const themeConfigSlice = createSlice({
     },
 
     setPageTitle(state, { payload }) {
-      document.title = `${payload} | ${import.meta.env.APP_NAME}`;
+      document.title = `${payload} | ${import.meta.env.VITE_APP_NAME}`;
     },
   },
 });

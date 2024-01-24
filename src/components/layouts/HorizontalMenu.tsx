@@ -1,5 +1,5 @@
-import menuConfig from '@config/menuConfig';
-import IconCaretDown from '@icon/IconCaretDown';
+import IconCaretDown from '@components/atoms/Icons/IconCaretDown';
+import menuConfig from '@configs/menuConfig';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 

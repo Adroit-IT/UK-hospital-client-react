@@ -1,7 +1,7 @@
-import CustomDatePicker from '@atom/DatePicker';
-import Input from '@atom/Input';
-import SweetAlert from '@component/organisms/SweetAlert';
-import { setPageTitle } from '@config/themeConfigSlice';
+import CustomDatePicker from '@components/atoms/DatePicker';
+import Input from '@components/atoms/Input';
+import SweetAlert from '@components/organisms/SweetAlert';
+import { setPageTitle } from '@configs/themeConfigSlice';
 import { Form, Formik } from 'formik';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -457,7 +457,6 @@ const HomePage = () => {
           </a>
         </div>
       </section>
-
       <section className="bg-white dark:bg-gray-900">
         <div className="flex items-center justify-center h-screen max-w-screen-xl px-4 py-8 mx-auto lg:py-16 lg:px-12">
           <div className="w-full max-w-xl p-8 mt-8 bg-white rounded-md shadow-lg">

@@ -1,16 +1,16 @@
-import Dropdown from '@atom/Dropdown';
-import { toggleRTL, toggleSidebar, toggleTheme } from '@config/themeConfigSlice';
-import { IRootState } from '@config/themeRoot';
-import IconBellBing from '@icon/IconBellBing';
-import IconInfoCircle from '@icon/IconInfoCircle';
-import IconLaptop from '@icon/IconLaptop';
-import IconLogout from '@icon/IconLogout';
-import IconMenu from '@icon/IconMenu';
-import IconMoon from '@icon/IconMoon';
-import IconSearch from '@icon/IconSearch';
-import IconSun from '@icon/IconSun';
-import IconUser from '@icon/IconUser';
-import IconXCircle from '@icon/IconXCircle';
+import Dropdown from '@components/atoms/Dropdown';
+import IconBellBing from '@components/atoms/Icons/IconBellBing';
+import IconInfoCircle from '@components/atoms/Icons/IconInfoCircle';
+import IconLaptop from '@components/atoms/Icons/IconLaptop';
+import IconLogout from '@components/atoms/Icons/IconLogout';
+import IconMenu from '@components/atoms/Icons/IconMenu';
+import IconMoon from '@components/atoms/Icons/IconMoon';
+import IconSearch from '@components/atoms/Icons/IconSearch';
+import IconSun from '@components/atoms/Icons/IconSun';
+import IconUser from '@components/atoms/Icons/IconUser';
+import IconXCircle from '@components/atoms/Icons/IconXCircle';
+import { toggleRTL, toggleSidebar, toggleTheme } from '@configs/themeConfigSlice';
+import { IRootState } from '@configs/themeRoot';
 import i18next from 'i18next';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -90,7 +90,7 @@ const Header = () => {
             <Link to="/dashboard" className="flex items-center main-logo shrink-0">
               <img className="inline w-8 ltr:-ml-1 rtl:-mr-1" src="/assets/images/logo.svg" alt="logo" />
               <span className="text-2xl ltr:ml-1.5 rtl:mr-1.5  font-semibold  align-middle hidden md:inline dark:text-white-light transition-all duration-300">
-                {import.meta.env.APP_NAME}
+                {import.meta.env.VITE_APP_NAME}
               </span>
             </Link>
             <button

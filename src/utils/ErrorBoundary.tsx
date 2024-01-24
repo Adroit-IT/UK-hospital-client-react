@@ -1,4 +1,4 @@
-import Error500 from '@view/errors/Error500';
+import Error500 from '@views/errors/Error500';
 import React, { Component, ErrorInfo } from 'react';
 
 interface Props {

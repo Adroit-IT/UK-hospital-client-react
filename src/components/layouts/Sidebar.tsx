@@ -1,8 +1,8 @@
-import MenuItemComponent from '@component/molecules/MenuItemComponent';
-import menuConfig from '@config/menuConfig';
-import { toggleSidebar } from '@config/themeConfigSlice';
-import { IRootState } from '@config/themeRoot';
-import IconCaretsDown from '@icon/IconCaretsDown';
+import IconCaretsDown from '@components/atoms/Icons/IconCaretsDown';
+import MenuItemComponent from '@components/molecules/MenuItemComponent';
+import menuConfig from '@configs/menuConfig';
+import { toggleSidebar } from '@configs/themeConfigSlice';
+import { IRootState } from '@configs/themeRoot';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import PerfectScrollbar from 'react-perfect-scrollbar';

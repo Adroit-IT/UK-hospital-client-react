@@ -1,4 +1,4 @@
-import ErrorBoundary from '@util/ErrorBoundary';
+import ErrorBoundary from '@utils/ErrorBoundary';
 import { PropsWithChildren } from 'react';
 import App from '../../App';
 

@@ -1,4 +1,4 @@
-import IconMenuDashboard from '@component/atoms/Icon/Menu/IconMenuDashboard';
+import IconMenuDashboard from '@components/atoms/Icons/Menu/IconMenuDashboard';
 
 const menuConfig = [
   {

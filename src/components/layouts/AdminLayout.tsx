@@ -1,7 +1,7 @@
-import Portals from '@component/templates/Portal';
-import { toggleSidebar } from '@config/themeConfigSlice';
-import { IRootState } from '@config/themeRoot';
-import ErrorBoundary from '@util/ErrorBoundary';
+import Portals from '@components/templates/Portal';
+import { toggleSidebar } from '@configs/themeConfigSlice';
+import { IRootState } from '@configs/themeRoot';
+import ErrorBoundary from '@utils/ErrorBoundary';
 import { PropsWithChildren, Suspense, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import App from '../../App';

@@ -1,20 +1,11 @@
-import { toggleAnimation, toggleLayout, toggleLocale, toggleMenu, toggleNavbar, toggleRTL, toggleSemidark, toggleTheme } from '@config/themeConfigSlice';
-import store, { IRootState } from '@config/themeRoot';
-import Error503 from '@view/errors/Error503';
-import { PropsWithChildren, useEffect, useState } from 'react';
+import { toggleAnimation, toggleLayout, toggleLocale, toggleMenu, toggleNavbar, toggleRTL, toggleSemidark, toggleTheme } from '@configs/themeConfigSlice';
+import store, { IRootState } from '@configs/themeRoot';
+import { PropsWithChildren, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 function App({ children }: PropsWithChildren) {
   const themeConfig = useSelector((state: IRootState) => state.themeConfig);
   const dispatch = useDispatch();
-  const [isServiceUnavailable, setIsServiceUnavailable] = useState(false);
-
-  useEffect(() => {
-    // Simulate a maintenance scenario (replace this with your actual logic)
-    setTimeout(() => {
-      setIsServiceUnavailable(true);
-    }, 5000); // 5 seconds for demonstration, adjust as needed
-  }, []);
 
   useEffect(() => {
     dispatch(toggleTheme(localStorage.getItem('theme') || themeConfig.theme));
@@ -36,11 +27,6 @@ function App({ children }: PropsWithChildren) {
     themeConfig.locale,
     themeConfig.semidark,
   ]);
-
-  if (isServiceUnavailable) {
-    // Render the Error503 component when service is unavailable
-    return <Error503 />;
-  }
 
   return (
     <div

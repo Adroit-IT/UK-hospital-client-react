@@ -1,6 +1,6 @@
-import { Dialog, Transition } from "@headlessui/react";
-import IconX from "@icon/IconX";
-import React, { Fragment } from "react";
+import IconX from '@components/atoms/Icons/IconX';
+import { Dialog, Transition } from '@headlessui/react';
+import React, { Fragment } from 'react';
 
 interface ModalProps {
   open: boolean;
@@ -35,17 +35,10 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, title, children }) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel
-                as="div"
-                className="w-full max-w-lg p-0 my-8 overflow-hidden text-black border-0 rounded-lg panel dark:text-white-dark"
-              >
+              <Dialog.Panel as="div" className="w-full max-w-lg p-0 my-8 overflow-hidden text-black border-0 rounded-lg panel dark:text-white-dark">
                 <div className="flex bg-[#fbfbfb] dark:bg-[#121c2c] items-center justify-between px-5 py-3">
                   <div className="text-lg font-bold">{title}</div>
-                  <button
-                    type="button"
-                    className="text-white-dark hover:text-dark"
-                    onClick={onClose}
-                  >
+                  <button type="button" className="text-white-dark hover:text-dark" onClick={onClose}>
                     <IconX />
                   </button>
                 </div>

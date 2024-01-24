@@ -1,6 +1,7 @@
-import AdminLayout from '@component/layouts/AdminLayout';
-import AuthLayout from '@component/layouts/AuthLayout';
-import GuestLayout from '@component/layouts/GuestLayout';
+import AdminLayout from '@components/layouts/AdminLayout';
+import AuthLayout from '@components/layouts/AuthLayout';
+import GuestLayout from '@components/layouts/GuestLayout';
+import { MaintenanceMiddleware } from '@middlewares/maintenanceMiddleware';
 import { createBrowserRouter } from 'react-router-dom';
 import { routes } from './routes';
 
@@ -21,9 +22,10 @@ const finalRoutes = routes.map((route) => {
       layoutElement = <AuthLayout>{route.element}</AuthLayout>;
   }
 
+  const elementWithMaintenanceMiddleware = <MaintenanceMiddleware>{layoutElement}</MaintenanceMiddleware>;
   return {
     ...route,
-    element: layoutElement,
+    element: elementWithMaintenanceMiddleware,
   };
 });
 

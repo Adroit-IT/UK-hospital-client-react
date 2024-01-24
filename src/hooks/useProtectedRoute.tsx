@@ -1,6 +1,6 @@
+import { AuthMiddleware } from '@middlewares/AuthMiddleware';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthMiddleware } from '../middleware/AuthMiddleware';
 
 export const useProtectedRoute = (redirectPath = '/login') => {
   const navigate = useNavigate();

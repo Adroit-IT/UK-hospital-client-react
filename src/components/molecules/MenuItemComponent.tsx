@@ -1,4 +1,4 @@
-import IconCaretDown from '@icon/IconCaretDown';
+import IconCaretDown from '@components/atoms/Icons/IconCaretDown';
 import React, { useState } from 'react';
 import AnimateHeight from 'react-animate-height';
 import { NavLink } from 'react-router-dom';

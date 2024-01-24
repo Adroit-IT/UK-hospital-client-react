@@ -1,4 +1,4 @@
-import { setPageTitle } from '@config/themeConfigSlice';
+import { setPageTitle } from '@configs/themeConfigSlice';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 

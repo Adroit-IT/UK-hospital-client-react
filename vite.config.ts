@@ -8,15 +8,12 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
-      '@view': path.resolve(__dirname, './src/views'),
-      '@util': path.resolve(__dirname, './src/utils'),
-      '@asset': path.resolve(__dirname, './src/assets'),
-      '@config': path.resolve(__dirname, './src/configs'),
-      '@component': path.resolve(__dirname, './src/components'),
-      '@atom': path.resolve(__dirname, './src/components/atoms'),
-      '@icon': path.resolve(__dirname, './src/components/atoms/Icon'),
-      '@molecule': path.resolve(__dirname, './src/components/molecules'),
-      '@organism': path.resolve(__dirname, './src/components/organisms'),
+      '@views': path.resolve(__dirname, './src/views'),
+      '@utils': path.resolve(__dirname, './src/utils'),
+      '@assets': path.resolve(__dirname, './src/assets'),
+      '@configs': path.resolve(__dirname, './src/configs'),
+      '@components': path.resolve(__dirname, './src/components'),
+      '@middlewares': path.resolve(__dirname, './src/middlewares'),
     },
   },
 });

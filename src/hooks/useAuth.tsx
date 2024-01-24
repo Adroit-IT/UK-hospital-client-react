@@ -1,5 +1,5 @@
+import { AuthMiddleware } from '@middlewares/AuthMiddleware';
 import { useState } from 'react';
-import { AuthMiddleware } from '../middleware/AuthMiddleware';
 import { AuthService } from '../services/AuthService';
 
 export const useAuth = () => {

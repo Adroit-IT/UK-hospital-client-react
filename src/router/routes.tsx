@@ -1,9 +1,9 @@
-import HomePage from '@view/HomePage';
-import Login from '@view/auth/Login';
-import Register from '@view/auth/Register';
-import ResetEmail from '@view/auth/ResetEmail';
-import Error404 from '@view/errors/Error404';
-import Dashboard from '@view/protected';
+import HomePage from '@views/HomePage';
+import Login from '@views/auth/Login';
+import Register from '@views/auth/Register';
+import ResetEmail from '@views/auth/ResetEmail';
+import Error404 from '@views/errors/Error404';
+import Dashboard from '@views/protected';
 
 const routes = [
   {

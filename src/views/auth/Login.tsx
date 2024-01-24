@@ -1,7 +1,7 @@
-import Card from '@component/organisms/auth/Card';
-import { setPageTitle } from '@config/themeConfigSlice';
-import IconLockDots from '@icon/IconLockDots';
-import IconMail from '@icon/IconMail';
+import IconLockDots from '@components/atoms/Icons/IconLockDots';
+import IconMail from '@components/atoms/Icons/IconMail';
+import Card from '@components/organisms/auth/Card';
+import { setPageTitle } from '@configs/themeConfigSlice';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';

@@ -1,7 +1,7 @@
-import Dropdown from '@atom/Dropdown';
-import { setPageTitle, toggleRTL } from '@config/themeConfigSlice';
-import { IRootState } from '@config/themeRoot';
-import IconCaretDown from '@icon/IconCaretDown';
+import Dropdown from '@components/atoms/Dropdown';
+import IconCaretDown from '@components/atoms/Icons/IconCaretDown';
+import { setPageTitle, toggleRTL } from '@configs/themeConfigSlice';
+import { IRootState } from '@configs/themeRoot';
 import i18next from 'i18next';
 import React, { ReactNode, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,7 +13,7 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ children }) => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(setPageTitle('Recover Id Box'));
+    dispatch(setPageTitle('Sign In'));
   });
   const isRtl = useSelector((state: IRootState) => state.themeConfig.rtlClass) === 'rtl' ? true : false;
   const themeConfig = useSelector((state: IRootState) => state.themeConfig);

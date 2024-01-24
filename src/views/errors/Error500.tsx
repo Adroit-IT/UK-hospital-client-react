@@ -1,5 +1,5 @@
-import { setPageTitle } from '@config/themeConfigSlice';
-import { IRootState } from '@config/themeRoot';
+import { setPageTitle } from '@configs/themeConfigSlice';
+import { IRootState } from '@configs/themeRoot';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
