@@ -5,6 +5,7 @@ import { setPageTitle } from '@config/themeConfigSlice';
 import { Form, Formik } from 'formik';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import * as Yup from 'yup';
 
 const HomePage = () => {
@@ -66,12 +67,12 @@ const HomePage = () => {
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
           </a>
           <div className="flex space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
-            <button
-              type="button"
+            <NavLink
+              to="/login"
               className="px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
-              Get started
-            </button>
+              Login
+            </NavLink>
             <button
               data-collapse-toggle="navbar-cta"
               type="button"
