@@ -1,3 +1,8 @@
+import IconArchive from '@components/atoms/Icons/IconArchive';
+import IconEye from '@components/atoms/Icons/IconEye';
+import IconSettings from '@components/atoms/Icons/IconSettings';
+import IconTag from '@components/atoms/Icons/IconTag';
+import IconUsers from '@components/atoms/Icons/IconUsers';
 import IconMenuDashboard from '@components/atoms/Icons/Menu/IconMenuDashboard';
 
 const menuConfig = [
@@ -7,9 +12,34 @@ const menuConfig = [
     directRoute: '/dashboard',
   },
   {
+    title: 'Appointments',
+    icon: <IconEye />,
+    directRoute: '/appointments',
+  },
+  {
+    title: 'Departments',
+    icon: <IconArchive />,
+    directRoute: '/departments',
+  },
+  {
+    title: 'Roles',
+    icon: <IconSettings />,
+    directRoute: '/roles',
+  },
+  {
+    title: 'Symptoms',
+    icon: <IconTag />,
+    directRoute: '/symptoms',
+  },
+  {
+    title: 'Users',
+    icon: <IconUsers />,
+    directRoute: '/users',
+  },
+  // Example
+  {
     title: 'Components',
     icon: <IconMenuDashboard />,
-    label: 'Components',
     url: '/components',
     subMenuItems: [
       { label: 'Tabs', url: '/components/tabs' },
