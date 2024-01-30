@@ -22,12 +22,15 @@
     "types": ["node"],
     "paths": {
       "@*": ["./src/*"],
-      "@views/*": ["./src/views/*"],
-      "@utils/*": ["./src/utils/*"],
+      "@apis/*": ["./src/apis/*"],
       "@assets/*": ["./src/assets/*"],
-      "@configs/*": ["./src/configs/*"],
       "@components/*": ["./src/components/*"],
-      "@middlewares/*": ["./src/middlewares/*"]
+      "@configs/*": ["./src/configs/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@middlewares/*": ["./src/middlewares/*"],
+      "@services/*": ["./src/services/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@views/*": ["./src/views/*"]
     }
   },
   "include": ["src"],

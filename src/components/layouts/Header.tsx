@@ -1,6 +1,4 @@
 import Dropdown from '@components/atoms/Dropdown';
-import IconBellBing from '@components/atoms/Icons/IconBellBing';
-import IconInfoCircle from '@components/atoms/Icons/IconInfoCircle';
 import IconLaptop from '@components/atoms/Icons/IconLaptop';
 import IconLogout from '@components/atoms/Icons/IconLogout';
 import IconMenu from '@components/atoms/Icons/IconMenu';
@@ -11,14 +9,25 @@ import IconUser from '@components/atoms/Icons/IconUser';
 import IconXCircle from '@components/atoms/Icons/IconXCircle';
 import { toggleRTL, toggleSidebar, toggleTheme } from '@configs/themeConfigSlice';
 import { IRootState } from '@configs/themeRoot';
+import { AuthService } from '@services/AuthService';
 import i18next from 'i18next';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import HorizontalMenu from './HorizontalMenu';
 
+interface UserData {
+  name: string;
+  email: string;
+  // Add other properties if needed
+}
+
 const Header = () => {
+  const [userData, setUserData] = useState<UserData | null>(null);
   const location = useLocation();
+  const navigate = useNavigate();
+
   useEffect(() => {
     const selector = document.querySelector('ul.horizontal-menu a[href="' + window.location.pathname + '"]');
     if (selector) {
@@ -40,35 +49,58 @@ const Header = () => {
     }
   }, [location]);
 
+  const handleSignOut = async () => {
+    // Display a SweetAlert confirmation dialog
+    Swal.fire({
+      title: 'Sign Out',
+      text: 'Are you sure you want to sign out?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, sign out!',
+    }).then(async (result) => {
+      // If the user clicks on the confirm button
+      if (result.isConfirmed) {
+        try {
+          // Retrieve user data from localStorage
+          const storedUserData = localStorage.getItem('userData');
+
+          if (storedUserData) {
+            const response = await AuthService.logout(); // Pass userId to logout function
+
+            if (response.success) {
+              // Clear user data and perform necessary sign-out logic
+              localStorage.removeItem('userData');
+              setUserData(null);
+
+              // Redirect to the login page
+              navigate('/login');
+            } else {
+              // Handle unsuccessful logout (display error, etc.)
+              Swal.fire({
+                title: 'Error',
+                text: 'Failed to sign out. Please try again.',
+                icon: 'error',
+              });
+            }
+          }
+        } catch (error) {
+          console.error('Error during sign out:', error);
+          Swal.fire({
+            title: 'Error',
+            text: 'An unexpected error occurred. Please try again.',
+            icon: 'error',
+          });
+        }
+      }
+    });
+  };
+
   const isRtl = useSelector((state: IRootState) => state.themeConfig.rtlClass) === 'rtl' ? true : false;
 
   const themeConfig = useSelector((state: IRootState) => state.themeConfig);
   const dispatch = useDispatch();
-
-  const [notifications, setNotifications] = useState([
-    {
-      id: 1,
-      profile: 'user-profile.jpeg',
-      message: '<strong className="mr-1 text-sm">John Doe</strong>invite you to <strong>Prototyping</strong>',
-      time: '45 min ago',
-    },
-    {
-      id: 2,
-      profile: 'profile-34.jpeg',
-      message: '<strong className="mr-1 text-sm">Adam Nolan</strong>mentioned you to <strong>UX Basics</strong>',
-      time: '9h Ago',
-    },
-    {
-      id: 3,
-      profile: 'profile-16.jpeg',
-      message: '<strong className="mr-1 text-sm">Anna Morgan</strong>Upload a file',
-      time: '9h Ago',
-    },
-  ]);
-
-  const removeNotification = (value: number) => {
-    setNotifications(notifications.filter((user) => user.id !== value));
-  };
 
   const [search, setSearch] = useState(false);
 
@@ -81,6 +113,24 @@ const Header = () => {
     }
   };
   const [flag, setFlag] = useState(themeConfig.locale);
+
+  useEffect(() => {
+    // Retrieve user data from localStorage
+    const storedUserData = localStorage.getItem('userData');
+
+    if (storedUserData) {
+      setUserData(JSON.parse(storedUserData));
+    }
+  }, []);
+
+  const generateInitials = (name: any) => {
+    if (!name) return '';
+    const nameParts = name.split(' ');
+    return nameParts
+      .map((part: any) => part[0])
+      .join('')
+      .toUpperCase();
+  };
 
   return (
     <header className={`z-40 ${themeConfig.semidark && themeConfig.menu === 'horizontal' ? 'dark' : ''}`}>
@@ -206,117 +256,42 @@ const Header = () => {
                 </Dropdown>
               </div>
             )}
-            <div className="dropdown shrink-0">
-              <Dropdown
-                offset={[0, 8]}
-                placement={`${isRtl ? 'bottom-start' : 'bottom-end'}`}
-                btnClassName="relative block p-2 rounded-full bg-white-light/40 dark:bg-dark/40 hover:text-primary hover:bg-white-light/90 dark:hover:bg-dark/60"
-                button={
-                  <span>
-                    <IconBellBing />
-                    <span className="absolute top-0 flex w-3 h-3 ltr:right-0 rtl:left-0">
-                      <span className="animate-ping absolute ltr:-left-[3px] rtl:-right-[3px] -top-[3px] inline-flex h-full w-full rounded-full bg-success/50 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full w-[6px] h-[6px] bg-success"></span>
-                    </span>
-                  </span>
-                }
-              >
-                <ul className="!py-0 text-dark dark:text-white-dark w-[300px] sm:w-[350px] divide-y dark:divide-white/10">
-                  <li onClick={(e) => e.stopPropagation()}>
-                    <div className="flex items-center justify-between px-4 py-2 font-semibold">
-                      <h4 className="text-lg">Notification</h4>
-                      {notifications.length ? <span className="badge bg-primary/80">{notifications.length}New</span> : ''}
-                    </div>
-                  </li>
-                  {notifications.length > 0 ? (
-                    <>
-                      {notifications.map((notification) => {
-                        return (
-                          <li key={notification.id} className="dark:text-white-light/90" onClick={(e) => e.stopPropagation()}>
-                            <div className="flex items-center px-4 py-2 group">
-                              <div className="grid rounded place-content-center">
-                                <div className="relative w-12 h-12">
-                                  <img className="object-cover w-12 h-12 rounded-full" alt="profile" src={`/assets/images/${notification.profile}`} />
-                                  <span className="bg-success w-2 h-2 rounded-full block absolute right-[6px] bottom-0"></span>
-                                </div>
-                              </div>
-                              <div className="flex flex-auto ltr:pl-3 rtl:pr-3">
-                                <div className="ltr:pr-3 rtl:pl-3">
-                                  <h6
-                                    dangerouslySetInnerHTML={{
-                                      __html: notification.message,
-                                    }}
-                                  ></h6>
-                                  <span className="block text-xs font-normal dark:text-gray-500">{notification.time}</span>
-                                </div>
-                                <button
-                                  type="button"
-                                  className="opacity-0 ltr:ml-auto rtl:mr-auto text-neutral-300 hover:text-danger group-hover:opacity-100"
-                                  onClick={() => removeNotification(notification.id)}
-                                >
-                                  <IconXCircle />
-                                </button>
-                              </div>
-                            </div>
-                          </li>
-                        );
-                      })}
-                      <li>
-                        <div className="p-4">
-                          <button className="block w-full btn btn-primary btn-small">Read All Notifications</button>
+            {userData && (
+              <div className="flex dropdown shrink-0">
+                <Dropdown
+                  offset={[0, 8]}
+                  placement={`${isRtl ? 'bottom-start' : 'bottom-end'}`}
+                  btnClassName="relative group block"
+                  button={<div className="flex items-center justify-center text-white rounded-full w-9 h-9 bg-primary">{generateInitials(userData.name)}</div>}
+                >
+                  <ul className="text-dark dark:text-white-dark !py-0 w-[230px] font-semibold dark:text-white-light/90">
+                    <li>
+                      <div className="flex items-center px-2 py-4">
+                        <div className="flex items-center justify-center text-white rounded-md w-9 h-9 bg-primary">{generateInitials(userData.name)}</div>
+                        <div className="truncate ltr:pl-2 rtl:pr-2">
+                          <h4 className="text-base">{userData?.name}</h4>
+                          <button type="button" className="text-black/60 hover:text-primary dark:text-dark-light/60 dark:hover:text-white">
+                            {userData?.email}
+                          </button>
                         </div>
-                      </li>
-                    </>
-                  ) : (
-                    <li onClick={(e) => e.stopPropagation()}>
-                      <button type="button" className="!grid place-content-center hover:!bg-transparent text-lg min-h-[200px]">
-                        <div className="mx-auto mb-4 rounded-full ring-4 ring-primary/30 text-primary">
-                          <IconInfoCircle fill={true} className="w-10 h-10" />
-                        </div>
-                        No data available.
-                      </button>
-                    </li>
-                  )}
-                </ul>
-              </Dropdown>
-            </div>
-            <div className="flex dropdown shrink-0">
-              <Dropdown
-                offset={[0, 8]}
-                placement={`${isRtl ? 'bottom-start' : 'bottom-end'}`}
-                btnClassName="relative group block"
-                button={<img className="object-cover rounded-full w-9 h-9 saturate-50 group-hover:saturate-100" src="/assets/images/user-profile.jpeg" alt="userProfile" />}
-              >
-                <ul className="text-dark dark:text-white-dark !py-0 w-[230px] font-semibold dark:text-white-light/90">
-                  <li>
-                    <div className="flex items-center px-4 py-4">
-                      <img className="object-cover w-10 h-10 rounded-md" src="/assets/images/user-profile.jpeg" alt="userProfile" />
-                      <div className="truncate ltr:pl-4 rtl:pr-4">
-                        <h4 className="text-base">
-                          John Doe
-                          <span className="px-1 text-xs rounded bg-success-light text-success ltr:ml-2 rtl:ml-2">Pro</span>
-                        </h4>
-                        <button type="button" className="text-black/60 hover:text-primary dark:text-dark-light/60 dark:hover:text-white">
-                          johndoe@gmail.com
-                        </button>
                       </div>
-                    </div>
-                  </li>
-                  <li>
-                    <Link to="/users/profile" className="dark:hover:text-white">
-                      <IconUser className="w-4.5 h-4.5 ltr:mr-2 rtl:ml-2 shrink-0" />
-                      Profile
-                    </Link>
-                  </li>
-                  <li className="border-t border-white-light dark:border-white-light/10">
-                    <Link to="/login" className="text-danger !py-3">
-                      <IconLogout className="w-4.5 h-4.5 ltr:mr-2 rtl:ml-2 rotate-90 shrink-0" />
-                      Sign Out
-                    </Link>
-                  </li>
-                </ul>
-              </Dropdown>
-            </div>
+                    </li>
+                    <li>
+                      <Link to="/users/profile" className="dark:hover:text-white">
+                        <IconUser className="w-4.5 h-4.5 ltr:mr-2 rtl:ml-2 shrink-0" />
+                        Profile
+                      </Link>
+                    </li>
+                    <li className="border-t cursor-pointer border-white-light dark:border-white-light/10">
+                      <a onClick={handleSignOut} className="text-danger !py-3">
+                        <IconLogout className="w-4.5 h-4.5 ltr:mr-2 rtl:ml-2 rotate-90 shrink-0" />
+                        Sign Out
+                      </a>
+                    </li>
+                  </ul>
+                </Dropdown>
+              </div>
+            )}
           </div>
         </div>
 

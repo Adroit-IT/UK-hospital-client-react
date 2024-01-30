@@ -18,6 +18,7 @@
     "@x1mrdonut1x/nouislider-react": "^3.4.3",
     "apexcharts": "^3.45.1",
     "autoprefixer": "^10.4.16",
+    "axios": "^1.6.7",
     "flowbite": "^2.2.1",
     "formik": "^2.4.5",
     "highlight.js": "^11.9.0",

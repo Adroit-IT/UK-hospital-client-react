@@ -4,7 +4,6 @@ import menuConfig from '@configs/menuConfig';
 import { toggleSidebar } from '@configs/themeConfigSlice';
 import { IRootState } from '@configs/themeRoot';
 import { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
@@ -14,7 +13,6 @@ const Sidebar = () => {
   const semidark = useSelector((state: IRootState) => state.themeConfig.semidark);
   const location = useLocation();
   const dispatch = useDispatch();
-  const { t } = useTranslation();
 
   useEffect(() => {
     const selector = document.querySelector('.sidebar ul a[href="' + window.location.pathname + '"]');
@@ -51,7 +49,7 @@ const Sidebar = () => {
           <div className="flex items-center justify-between px-4 py-3">
             <NavLink to="/dashboard" className="flex items-center main-logo shrink-0">
               <img className="w-8 ml-[5px] flex-none" src="/assets/images/logo.svg" alt="logo" />
-              <span className="text-2xl ltr:ml-1.5 rtl:mr-1.5 font-semibold align-middle lg:inline dark:text-white-light">{t('VRISTO')}</span>
+              <span className="text-2xl ltr:ml-1.5 rtl:mr-1.5 font-semibold align-middle lg:inline dark:text-white-light">{import.meta.env.VITE_APP_NAME}</span>
             </NavLink>
 
             <button

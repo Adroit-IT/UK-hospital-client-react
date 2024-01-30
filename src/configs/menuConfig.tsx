@@ -36,16 +36,6 @@ const menuConfig = [
     icon: <IconUsers />,
     directRoute: '/users',
   },
-  // Example
-  {
-    title: 'Components',
-    icon: <IconMenuDashboard />,
-    url: '/components',
-    subMenuItems: [
-      { label: 'Tabs', url: '/components/tabs' },
-      { label: 'Accordions', url: '/components/accordions' },
-    ],
-  },
 ];
 
 export default menuConfig;
